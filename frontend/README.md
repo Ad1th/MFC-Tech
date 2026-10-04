@@ -1,16 +1,33 @@
-# React + Vite
+# MFC-Tech frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React/Vite client for the MFC-Tech application.
 
-Currently, two official plugins are available:
+## Run locally
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+Run the sibling API from `../backend` at the same time and update the client API configuration if the backend uses a non-default port.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Build and lint
 
-## Expanding the ESLint configuration
+```bash
+npm run build
+npm run lint
+npm run preview
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Source files are in `src/`; generated Vite output belongs in `dist/`.
+
+## Frontend architecture
+
+```mermaid
+flowchart TD
+    Entry[src/main] --> App[React application]
+    App --> Components[UI components]
+    App --> Client[API client]
+    Client --> Backend[Sibling MFC-Tech backend]
+    Backend --> Browser[Rendered browser state]
+```
